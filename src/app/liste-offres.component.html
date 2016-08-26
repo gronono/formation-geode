@@ -4,3 +4,7 @@
     {{offre.id}} - {{offre.titre}}
   </li>
 </ul>
+<div *ngIf="selectedOffre">
+  <h2>{{selectedOffre.titre | uppercase}}</h2>
+  <p>{{selectedOffre.contenu}}</p>
+</div>

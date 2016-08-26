@@ -3,7 +3,7 @@ import { Offre } from './offre';
 
 @Component({
   moduleId: module.id,
-  selector: 'liste-offres',
+  selector: 'geode-liste-offres',
   templateUrl: 'liste-offres.component.html',
   styleUrls: ['liste-offres.component.css'],
 })
