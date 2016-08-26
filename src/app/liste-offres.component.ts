@@ -14,9 +14,16 @@ export class ListeOffresComponent {
     titre: 'dev angular2',
     contenu: 'recherche dev ng2'
   }, {
-    id: 1,
+    id: 2,
     titre: 'dev java',
     contenu: 'recherche dev java'
   }];
+
+  public selectedOffre: Offre;
+
+  onSelect(offre: Offre) {
+    console.log(`select ${offre.id} - ${offre.titre}`);
+    this.selectedOffre = offre;
+  }
 
 }
