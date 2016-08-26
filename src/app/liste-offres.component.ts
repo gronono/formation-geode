@@ -26,4 +26,8 @@ export class ListeOffresComponent {
     this.selectedOffre = offre;
   }
 
+  isSelected(offre: Offre) {
+    return this.selectedOffre === offre;
+  }
+
 }

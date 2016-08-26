@@ -1,6 +1,6 @@
 <h2>Liste des offres</h2>
 <ul>
-  <li *ngFor="let offre of offres" (click)="onSelect(offre)">
+  <li *ngFor="let offre of offres" (click)="onSelect(offre)" [class.selected]="isSelected(offre)">
     {{offre.id}} - {{offre.titre}}
   </li>
 </ul>
