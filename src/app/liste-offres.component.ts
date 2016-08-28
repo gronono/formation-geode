@@ -1,37 +1,24 @@
-import { Component } from '@angular/core';
+import {Component, Input, Output, EventEmitter, OnInit} from '@angular/core';
 import { Offre } from './offre';
-import { DetailOffreComponent } from './detail-offre.component';
 
 @Component({
   moduleId: module.id,
   selector: 'geode-liste-offres',
   templateUrl: 'liste-offres.component.html',
   styleUrls: ['liste-offres.component.css'],
-  directives: [
-    DetailOffreComponent
-  ]
 })
 export class ListeOffresComponent {
+  @Input() offres: Offre[];
+  @Input() selected: Offre;
+  @Output() offreSelected = new EventEmitter<Offre>();
 
-  public offres: Offre[] = [{
-    id: 1,
-    titre: 'dev angular2',
-    contenu: 'recherche dev ng2'
-  }, {
-    id: 2,
-    titre: 'dev java',
-    contenu: 'recherche dev java'
-  }];
-
-  public selectedOffre: Offre;
 
   onSelect(offre: Offre) {
-    console.log(`select ${offre.id} - ${offre.titre}`);
-    this.selectedOffre = offre;
+    console.log(`ListeOffresComponent.onSelect(${offre.id})`);
+    this.offreSelected.emit(offre);
   }
 
   isSelected(offre: Offre) {
-    return this.selectedOffre === offre;
+    return offre === this.selected;
   }
-
 }

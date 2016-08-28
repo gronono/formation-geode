@@ -1,0 +1,2 @@
+<geode-liste-offres [offres]="offres" (offreSelected)="onOffreSelected($event)" [selected]="selectedOffre"></geode-liste-offres>
+<geode-detail-offre *ngIf="selectedOffre" [offre]="selectedOffre"></geode-detail-offre>
