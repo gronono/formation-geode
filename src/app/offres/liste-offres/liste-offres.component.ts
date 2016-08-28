@@ -2,7 +2,7 @@ import {
   Component, Input, Output, EventEmitter, OnInit, OnChanges, OnDestroy, SimpleChanges,
   ChangeDetectionStrategy
 } from '@angular/core';
-import { Offre } from './offre';
+import { Offre } from '../offre';
 
 @Component({
   moduleId: module.id,
@@ -15,7 +15,6 @@ export class ListeOffresComponent implements OnInit, OnDestroy, OnChanges {
   @Input() offres: Offre[];
   @Input() selected: Offre;
   @Output() offreSelected = new EventEmitter<Offre>();
-
 
   onSelect(offre: Offre) {
     console.log(`ListeOffresComponent.onSelect(${offre.id})`);

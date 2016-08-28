@@ -2,16 +2,14 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import {StoreModule} from '@ngrx/store';
+import {combineReducers, StoreModule} from '@ngrx/store';
+import {runEffects} from "@ngrx/effects";
 import {compose} from '@ngrx/core/compose';
 import {storeLogger} from 'ngrx-store-logger';
-import {combineReducers, Action} from '@ngrx/store';
-import { AppComponent } from './app.component';
-import {CountPipe} from "./count.pipe";
-import {FAVORIS_REDUCER} from './favoris.reducer';
-import {OFFRES_REDUCER} from './offres.reducer';
-import {FavorisEffects} from './favoris.effects';
-import {runEffects} from "@ngrx/effects";
+import {AppComponent } from './app.component';
+import { CountPipe} from './shared';
+import { FAVORIS_REDUCER, FavorisEffects, FavorisComponent} from './favoris/index';
+import { OFFRES_REDUCER, Offreeffects, OffresComponent} from './offres/index';
 
 const STORE = {
   offres: OFFRES_REDUCER,
@@ -21,6 +19,8 @@ const STORE = {
 @NgModule({
   declarations: [
     AppComponent,
+    OffresComponent,
+    FavorisComponent,
     CountPipe
   ],
   imports: [
@@ -30,7 +30,7 @@ const STORE = {
     StoreModule.provideStore(compose(storeLogger(), combineReducers)(STORE)),
   ],
   providers: [
-    runEffects(FavorisEffects)
+    runEffects(FavorisEffects, Offreeffects)
   ],
   bootstrap: [AppComponent],
 })

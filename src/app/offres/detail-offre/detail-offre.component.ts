@@ -1,5 +1,5 @@
 import {Component, Input, Output, EventEmitter, ChangeDetectionStrategy} from '@angular/core';
-import { Offre } from './offre';
+import { Offre } from '../offre';
 
 @Component({
   moduleId: module.id,

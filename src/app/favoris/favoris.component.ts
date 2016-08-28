@@ -1,12 +1,12 @@
 import {Component, Input, ChangeDetectionStrategy } from '@angular/core';
-import { Offre } from './offre';
+import { Offre } from '../offres/index';
 
 @Component({
   moduleId: module.id,
-  selector: 'geode-offres-favorites',
-  templateUrl: 'offres-favorites.component.html',
+  selector: 'geode-favoris',
+  templateUrl: 'favoris.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class OffresFavoritesComponent {
+export class FavorisComponent {
   @Input() offres: Offre[];
 }

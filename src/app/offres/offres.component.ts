@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Offre } from './offre';
-import { DetailOffreComponent } from './detail-offre.component';
-import {ListeOffresComponent} from "./liste-offres.component";
+import { DetailOffreComponent } from './detail-offre/detail-offre.component';
+import {ListeOffresComponent} from "./liste-offres/liste-offres.component";
 import {Store} from "@ngrx/store";
 import {Observable} from "rxjs";
 
