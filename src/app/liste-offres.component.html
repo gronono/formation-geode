@@ -5,6 +5,5 @@
   </li>
 </ul>
 <div *ngIf="selectedOffre">
-  <h2>{{selectedOffre.titre | uppercase}}</h2>
-  <p>{{selectedOffre.contenu}}</p>
+  <geode-detail-offre [offre]="selectedOffre"></geode-detail-offre>
 </div>

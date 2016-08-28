@@ -1,11 +1,15 @@
 import { Component } from '@angular/core';
 import { Offre } from './offre';
+import { DetailOffreComponent } from './detail-offre.component';
 
 @Component({
   moduleId: module.id,
   selector: 'geode-liste-offres',
   templateUrl: 'liste-offres.component.html',
   styleUrls: ['liste-offres.component.css'],
+  directives: [
+    DetailOffreComponent
+  ]
 })
 export class ListeOffresComponent {
 
