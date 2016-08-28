@@ -30,4 +30,8 @@ export class OffresComponent {
     console.log(`OffresComponent.onOffreSelected ${offre.id}`);
     this.selectedOffre = offre;
   }
+
+  onAddFavoris(offre: Offre) {
+    console.log(`Favoris ${offre.id}`);
+  }
 }

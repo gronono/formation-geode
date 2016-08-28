@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, Output, EventEmitter} from '@angular/core';
 import { Offre } from './offre';
 
 @Component({
@@ -9,5 +9,9 @@ import { Offre } from './offre';
 export class DetailOffreComponent {
 
   @Input() offre: Offre;
+  @Output() addFavoris = new EventEmitter<Offre>();
 
+  onAddFavoris() {
+    this.addFavoris.emit(this.offre);
+  }
 }
