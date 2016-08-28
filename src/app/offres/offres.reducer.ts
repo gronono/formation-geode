@@ -1,4 +1,4 @@
-import {Offre} from "./offre";
+import {Offre} from "./offre.model";
 import {Action} from "@ngrx/store";
 
 const offres: Offre[] = [{
@@ -12,8 +12,5 @@ const offres: Offre[] = [{
 }];
 
 export const OFFRES_REDUCER = (state: Offre[] = offres, action: Action) => {
-  switch (action.type) {
-
-  }
   return state;
 }

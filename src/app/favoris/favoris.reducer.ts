@@ -1,4 +1,4 @@
-import {Offre} from "../offres/offre";
+import {Offre} from "../offres/index";
 import {Action} from "@ngrx/store";
 
 const favoris: Offre[] = [{
