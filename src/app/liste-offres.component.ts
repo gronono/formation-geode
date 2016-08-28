@@ -1,4 +1,4 @@
-import {Component, Input, Output, EventEmitter, OnInit} from '@angular/core';
+import {Component, Input, Output, EventEmitter, OnInit, OnChanges, OnDestroy, SimpleChanges} from '@angular/core';
 import { Offre } from './offre';
 
 @Component({
@@ -7,7 +7,7 @@ import { Offre } from './offre';
   templateUrl: 'liste-offres.component.html',
   styleUrls: ['liste-offres.component.css'],
 })
-export class ListeOffresComponent {
+export class ListeOffresComponent implements OnInit, OnDestroy, OnChanges {
   @Input() offres: Offre[];
   @Input() selected: Offre;
   @Output() offreSelected = new EventEmitter<Offre>();
@@ -20,5 +20,17 @@ export class ListeOffresComponent {
 
   isSelected(offre: Offre) {
     return offre === this.selected;
+  }
+
+  ngOnInit() {
+    console.log('Init');
+  }
+
+  ngOnDestroy() {
+    console.log('Destroy');
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log('Changes', changes);
   }
 }
