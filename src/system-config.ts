@@ -9,10 +9,16 @@
  **********************************************************************************************/
 /** Map relative paths to URLs. */
 const map: any = {
+  '@ngrx': 'vendor/@ngrx',
+  'ngrx-store-logger': 'vendor/ngrx-store-logger/dist',
 };
 
 /** User packages configuration. */
 const packages: any = {
+  '@ngrx/core': { format: 'cjs', main: 'index.js' },
+  '@ngrx/store': { format: 'cjs', main: 'index.js' },
+  '@ngrx/effects': { format: 'cjs', main: 'index.js' },
+  'ngrx-store-logger': { format: 'cjs', main: 'index.js' }
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////

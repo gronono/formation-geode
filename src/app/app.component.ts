@@ -3,6 +3,8 @@ import { ListeOffresComponent } from './liste-offres.component';
 import {OffresComponent} from "./offres.component";
 import {OffresFavoritesComponent} from "./offres-favorites.component";
 import {Offre } from './offre';
+import {Store} from "@ngrx/store";
+import {Observable} from "rxjs";
 
 @Component({
   moduleId: module.id,
@@ -18,13 +20,9 @@ import {Offre } from './offre';
 export class AppComponent {
   title = 'app works!';
 
-  public favoris: Offre[] = [{
-    id: 10,
-    titre: 'Favoris 1',
-    contenu: 'Mon offre favorite 1'
-  }, {
-    id: 20,
-    titre: 'Favoris 2',
-    contenu: 'Mon offre favorite 2'
-  }];
+  public favoris$: Observable<Offre[]>;
+
+  constructor(store: Store<any>) {
+    this.favoris$ = store.select('favoris') as Observable<Offre[]>;
+  }
 }

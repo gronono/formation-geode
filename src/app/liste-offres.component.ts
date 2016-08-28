@@ -1,4 +1,7 @@
-import {Component, Input, Output, EventEmitter, OnInit, OnChanges, OnDestroy, SimpleChanges} from '@angular/core';
+import {
+  Component, Input, Output, EventEmitter, OnInit, OnChanges, OnDestroy, SimpleChanges,
+  ChangeDetectionStrategy
+} from '@angular/core';
 import { Offre } from './offre';
 
 @Component({
@@ -6,6 +9,7 @@ import { Offre } from './offre';
   selector: 'geode-liste-offres',
   templateUrl: 'liste-offres.component.html',
   styleUrls: ['liste-offres.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ListeOffresComponent implements OnInit, OnDestroy, OnChanges {
   @Input() offres: Offre[];

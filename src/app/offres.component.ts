@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Offre } from './offre';
 import { DetailOffreComponent } from './detail-offre.component';
 import {ListeOffresComponent} from "./liste-offres.component";
+import {Store} from "@ngrx/store";
+import {Observable} from "rxjs";
 
 @Component({
   moduleId: module.id,
@@ -10,19 +12,16 @@ import {ListeOffresComponent} from "./liste-offres.component";
   directives: [
     ListeOffresComponent,
     DetailOffreComponent
-  ]
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class OffresComponent {
 
-  public offres: Offre[] = [{
-    id: 1,
-    titre: 'dev angular2',
-    contenu: 'recherche dev ng2'
-  }, {
-    id: 2,
-    titre: 'dev java',
-    contenu: 'recherche dev java'
-  }];
+  public offres$: Observable<Offre[]>;
+
+  constructor(private store: Store<any>) {
+    this.offres$ = store.select('offres') as Observable<Offre[]>;
+  }
 
   public selectedOffre: Offre;
 
@@ -33,5 +32,6 @@ export class OffresComponent {
 
   onAddFavoris(offre: Offre) {
     console.log(`Favoris ${offre.id}`);
+    this.store.dispatch({type: 'ADD_FAVORIS', payload: offre});
   }
 }

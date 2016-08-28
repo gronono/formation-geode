@@ -1,10 +1,11 @@
-import {Component, Input, Output, EventEmitter} from '@angular/core';
+import {Component, Input, Output, EventEmitter, ChangeDetectionStrategy} from '@angular/core';
 import { Offre } from './offre';
 
 @Component({
   moduleId: module.id,
   selector: 'geode-detail-offre',
-  templateUrl: 'detail-offre.component.html'
+  templateUrl: 'detail-offre.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DetailOffreComponent {
 
