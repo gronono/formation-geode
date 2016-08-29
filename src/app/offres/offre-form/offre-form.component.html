@@ -4,6 +4,7 @@
     <label for="titre">Titre :<input type="text" id="titre" name="titre" formControlName="titre" required/></label>
     <span *ngIf="offreForm.get('titre').dirty && offreForm.get('titre').hasError('required')">Ce champ est requis</span>
     <span *ngIf="offreForm.get('titre').dirty && offreForm.get('titre').hasError('minlength')">Trop court</span>
+    <span *ngIf="offreForm.get('titre').dirty && offreForm.get('titre').hasError('dontStartWithRecherche')">Doit commencer par Recherche</span>
   </p>
   <button type="submit" [disabled]="!offreForm.valid">Ajouter</button>
 </form>

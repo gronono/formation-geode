@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormGroup, FormBuilder, REACTIVE_FORM_DIRECTIVES, Validators} from "@angular/forms";
+import {FormGroup, FormBuilder, REACTIVE_FORM_DIRECTIVES, Validators, FormControl} from "@angular/forms";
 
 @Component({
   moduleId: module.id,
@@ -8,11 +8,17 @@ import {FormGroup, FormBuilder, REACTIVE_FORM_DIRECTIVES, Validators} from "@ang
   directives: [REACTIVE_FORM_DIRECTIVES]
 })
 export class OffreFormComponent {
+  static startWithRecherche(control: FormControl) {
+    if (!control.value.startsWith("Recherche")) {
+      return {dontStartWithRecherche: true};
+    }
+  }
+
   offreForm: FormGroup;
 
   constructor(private fb: FormBuilder) {
     this.offreForm = fb.group({
-      titre: fb.control('', Validators.compose([Validators.required, Validators.minLength(3)])),
+      titre: fb.control('', Validators.compose([Validators.required, Validators.minLength(3), OffreFormComponent.startWithRecherche])),
     });
   }
 
