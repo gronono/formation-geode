@@ -8,9 +8,12 @@ import {FormGroup, FormBuilder, REACTIVE_FORM_DIRECTIVES, Validators, FormContro
   directives: [REACTIVE_FORM_DIRECTIVES]
 })
 export class OffreFormComponent {
-  static startWithRecherche(control: FormControl) {
-    if (!control.value.startsWith("Recherche")) {
-      return {dontStartWithRecherche: true};
+  static startWith(keyword: string) {
+    return (control: FormControl) => {
+      if (!control.value.startsWith(keyword)) {
+        const key = "startWith" + keyword;
+        return {[key]: true};
+      }
     }
   }
 
@@ -18,7 +21,10 @@ export class OffreFormComponent {
 
   constructor(private fb: FormBuilder) {
     this.offreForm = fb.group({
-      titre: fb.control('', Validators.compose([Validators.required, Validators.minLength(3), OffreFormComponent.startWithRecherche])),
+      titre: fb.control('', Validators.compose([
+        Validators.required,
+        Validators.minLength(3),
+        OffreFormComponent.startWith("Recherche")])),
     });
   }
 
