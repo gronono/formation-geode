@@ -1,7 +1,10 @@
 <h2>Formulaire</h2>
-<form (ngSubmit)="add(offreForm)" #offreForm="ngForm">
-  <label for="titre">Titre :<input type="text" id="titre" name="titre" [(ngModel)]="offre.titre" required/></label>
-  <p>{{offre.titre}}</p>
-  <button type="submit">Ajouter</button>
+<form (ngSubmit)="add()" [formGroup]="offreForm">
+  <p>
+    <label for="titre">Titre :<input type="text" id="titre" name="titre" formControlName="titre" required/></label>
+    <span *ngIf="offreForm.get('titre').dirty && offreForm.get('titre').hasError('required')">Ce champ est requis</span>
+    <span *ngIf="offreForm.get('titre').dirty && offreForm.get('titre').hasError('minlength')">Trop court</span>
+  </p>
+  <button type="submit" [disabled]="!offreForm.valid">Ajouter</button>
 </form>
 

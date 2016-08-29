@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, FormBuilder} from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import {combineReducers, StoreModule} from '@ngrx/store';
 import {runEffects} from "@ngrx/effects";
@@ -32,6 +32,7 @@ const STORE = {
   providers: [
     OffreService, OffreStates,
     runEffects(FavorisActions, OffreActions),
+    FormBuilder
   ],
   bootstrap: [AppComponent],
 })
