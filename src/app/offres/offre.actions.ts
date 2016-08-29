@@ -13,17 +13,21 @@ export class OffreActions {
               private offreService: OffreService) {
   }
 
+  //
+  // Chargement des offres
+  //
   static LOAD_OFFRES = 'LOAD_OFFRES';
   loadOffres() {
     this.store.dispatch({type: OffreActions.LOAD_OFFRES})
   }
   @Effect() loadOffre$ = this.appState$
     .whenAction(OffreActions.LOAD_OFFRES)
-    .switchMap(() => this.offreService.findOffres()
-      .map(offres => OffreEvents.offresLoaded(offres))
-      .catch(error => Observable.of({type: 'ERROR'}))
-    );
+    .flatMap(() => this.offreService.findOffres())
+    .map(offres => OffreEvents.offresLoaded(offres));
 
+  //
+  // Ajout aux favoris
+  //
   static ADD_OFFRE_TO_FAVORIS = 'ADD_OFFRE_TO_FAVORIS';
   addOffreToFavoris(offre) {
     this.store.dispatch({type: OffreActions.ADD_OFFRE_TO_FAVORIS, payload: offre});

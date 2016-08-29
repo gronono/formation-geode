@@ -20,7 +20,7 @@ export const FAVORIS_REDUCER = (state: Offre[] = favoris, action: Action) => {
     }
   }
   return state;
-}
+};
 
 export class FavorisEvents {
 }

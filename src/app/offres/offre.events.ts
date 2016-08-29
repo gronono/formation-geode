@@ -10,7 +10,7 @@ export const OFFRES_REDUCER = (state: Offre[] = [], action: Action) => {
   }
 
   return state;
-}
+};
 
 export class OffreEvents {
   static OFFRES_LOADED = 'OFFRES_LOADED';
