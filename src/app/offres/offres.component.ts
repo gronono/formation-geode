@@ -1,8 +1,9 @@
 import {Component, ChangeDetectionStrategy, OnInit} from '@angular/core';
+import {Observable} from "rxjs/Rx";
 import { Offre } from './offre.models';
 import { DetailOffreComponent } from './detail-offre/detail-offre.component';
 import {ListeOffresComponent} from "./liste-offres/liste-offres.component";
-import {Observable} from "rxjs/Rx";
+import {OffreFormComponent} from "./offre-form/offre-form.component";
 import {OffreActions} from "./offre.actions";
 import {OffreStates} from "./offre.states";
 
@@ -12,7 +13,8 @@ import {OffreStates} from "./offre.states";
   templateUrl: 'offres.component.html',
   directives: [
     ListeOffresComponent,
-    DetailOffreComponent
+    DetailOffreComponent,
+    OffreFormComponent
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })

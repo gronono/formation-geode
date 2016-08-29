@@ -1,5 +1,7 @@
-<h2>Détail d'un offre</h2>
-<p>Id: {{offre.id}}</p>
-<p>Titre: {{offre.titre | uppercase}}</p>
-<p>Contenu: {{offre.contenu | count}}</p>
-<button (click)="onAddFavoris()">Ajouter au favoris</button>
+<h2>Formulaire</h2>
+<form (ngSubmit)="add(offreForm)" #offreForm="ngForm">
+  <label for="titre">Titre :<input type="text" id="titre" name="titre" [(ngModel)]="offre.titre" required/></label>
+  <p>{{offre.titre}}</p>
+  <button type="submit">Ajouter</button>
+</form>
+

@@ -1,18 +1,19 @@
 import {Component, Input, Output, EventEmitter, ChangeDetectionStrategy} from '@angular/core';
 import {Offre} from '../index';
+import {FormGroup} from "@angular/forms";
 
 @Component({
   moduleId: module.id,
-  selector: 'geode-detail-offre',
-  templateUrl: 'detail-offre.component.html',
+  selector: 'geode-offre-form',
+  templateUrl: 'offre-form.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DetailOffreComponent {
+export class OffreFormComponent {
 
-  @Input() offre: Offre;
-  @Output() addFavoris = new EventEmitter<Offre>();
+  offre = {
+  };
 
-  onAddFavoris() {
-    this.addFavoris.emit(this.offre);
+  add(form: FormGroup) {
+    console.log("add", form, this.offre);
   }
 }

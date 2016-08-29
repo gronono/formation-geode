@@ -1,2 +1,3 @@
 <geode-liste-offres [offres]="offres$ | async" (offreSelected)="onOffreSelected($event)" [selected]="selectedOffre"></geode-liste-offres>
 <geode-detail-offre *ngIf="selectedOffre" [offre]="selectedOffre" (addFavoris)="onAddFavoris($event)"></geode-detail-offre>
+<geode-offre-form></geode-offre-form>
