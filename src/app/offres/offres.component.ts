@@ -1,10 +1,10 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { Offre } from './offre.model';
+import {Component, ChangeDetectionStrategy, OnInit} from '@angular/core';
+import { Offre } from './offre.models';
 import { DetailOffreComponent } from './detail-offre/detail-offre.component';
 import {ListeOffresComponent} from "./liste-offres/liste-offres.component";
-import {Store} from "@ngrx/store";
-import {Observable} from "rxjs";
-import {FavorisEffects} from "../favoris/favoris.effects";
+import {Observable} from "rxjs/Rx";
+import {OffreActions} from "./offre.actions";
+import {OffreStates} from "./offre.states";
 
 @Component({
   moduleId: module.id,
@@ -16,15 +16,18 @@ import {FavorisEffects} from "../favoris/favoris.effects";
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class OffresComponent {
+export class OffresComponent implements OnInit {
 
   public offres$: Observable<Offre[]>;
+  public selectedOffre: Offre;
 
-  constructor(private store: Store<any>, private favorisEffects: FavorisEffects) {
-    this.offres$ = store.select('offres') as Observable<Offre[]>;
+  constructor(private offreStates: OffreStates, private offreActions: OffreActions) {
+    this.offres$ = offreStates.getAllOffres();
   }
 
-  public selectedOffre: Offre;
+  ngOnInit() {
+    this.offreActions.loadOffres();
+  }
 
   onOffreSelected(offre: Offre) {
     console.log(`OffresComponent.onOffreSelected ${offre.id}`);
@@ -33,6 +36,6 @@ export class OffresComponent {
 
   onAddFavoris(offre: Offre) {
     console.log(`Favoris ${offre.id}`);
-    this.favorisEffects.addFavoris(offre);
+    this.offreActions.addOffreToFavoris(offre);
   }
 }

@@ -1,4 +1,4 @@
-import {Offre} from "../offres/index";
+import {Offre, OffreEvents} from "../offres/index";
 import {Action} from "@ngrx/store";
 
 const favoris: Offre[] = [{
@@ -13,7 +13,7 @@ const favoris: Offre[] = [{
 
 export const FAVORIS_REDUCER = (state: Offre[] = favoris, action: Action) => {
   switch (action.type) {
-    case 'FAVORIS_ADDED': {
+    case OffreEvents.OFFRE_FAVORIS_ADDED: {
       let copy = state.slice(0);
       copy.push(action.payload);
       return copy;
@@ -22,8 +22,5 @@ export const FAVORIS_REDUCER = (state: Offre[] = favoris, action: Action) => {
   return state;
 }
 
-export class FavorisReducers {
-  static favorisAdded(offre: Offre): Action {
-    return {type: 'FAVORIS_ADDED', payload: offre};
-  }
+export class FavorisEvents {
 }

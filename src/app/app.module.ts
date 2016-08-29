@@ -8,8 +8,8 @@ import {compose} from '@ngrx/core/compose';
 import {storeLogger} from 'ngrx-store-logger';
 import {AppComponent } from './app.component';
 import { CountPipe} from './shared';
-import { FAVORIS_REDUCER, FavorisEffects, FavorisComponent} from './favoris/index';
-import { OFFRES_REDUCER, Offreeffects, OffresComponent} from './offres/index';
+import { FAVORIS_REDUCER, FavorisActions, FavorisComponent} from './favoris/index';
+import { OFFRES_REDUCER, OffreActions, OffresComponent, OffreService, OffreStates} from './offres/index';
 
 const STORE = {
   offres: OFFRES_REDUCER,
@@ -30,7 +30,8 @@ const STORE = {
     StoreModule.provideStore(compose(storeLogger(), combineReducers)(STORE)),
   ],
   providers: [
-    runEffects(FavorisEffects, Offreeffects)
+    OffreService, OffreStates,
+    runEffects(FavorisActions, OffreActions),
   ],
   bootstrap: [AppComponent],
 })
