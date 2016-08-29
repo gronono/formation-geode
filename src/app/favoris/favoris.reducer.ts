@@ -21,3 +21,9 @@ export const FAVORIS_REDUCER = (state: Offre[] = favoris, action: Action) => {
   }
   return state;
 }
+
+export class FavorisReducers {
+  static favorisAdded(offre: Offre): Action {
+    return {type: 'FAVORIS_ADDED', payload: offre};
+  }
+}

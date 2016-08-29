@@ -4,6 +4,7 @@ import { DetailOffreComponent } from './detail-offre/detail-offre.component';
 import {ListeOffresComponent} from "./liste-offres/liste-offres.component";
 import {Store} from "@ngrx/store";
 import {Observable} from "rxjs";
+import {FavorisEffects} from "../favoris/favoris.effects";
 
 @Component({
   moduleId: module.id,
@@ -19,7 +20,7 @@ export class OffresComponent {
 
   public offres$: Observable<Offre[]>;
 
-  constructor(private store: Store<any>) {
+  constructor(private store: Store<any>, private favorisEffects: FavorisEffects) {
     this.offres$ = store.select('offres') as Observable<Offre[]>;
   }
 
@@ -32,6 +33,6 @@ export class OffresComponent {
 
   onAddFavoris(offre: Offre) {
     console.log(`Favoris ${offre.id}`);
-    this.store.dispatch({type: 'ADD_FAVORIS', payload: offre});
+    this.favorisEffects.addFavoris(offre);
   }
 }
