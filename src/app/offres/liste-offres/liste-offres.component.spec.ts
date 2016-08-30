@@ -1,5 +1,5 @@
 
-import { addProviders, async, inject } from '@angular/core/testing';
+import { inject } from '@angular/core/testing';
 import {ListeOffresComponent} from "./liste-offres.component";
 import {TestBed} from "@angular/core/testing/test_bed";
 
