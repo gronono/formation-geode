@@ -10,7 +10,8 @@ import {Offre} from "./offre.models";
 export class OffreActions {
   constructor(private appState$: StateUpdates<any>,
               private store: Store<any>,
-              private offreService: OffreService) {
+              private offreService: OffreService,
+              private offreEvents: OffreEvents) {
   }
 
   //
@@ -23,7 +24,7 @@ export class OffreActions {
   @Effect() loadOffre$ = this.appState$
     .whenAction(OffreActions.LOAD_OFFRES)
     .flatMap(() => this.offreService.findOffres())
-    .map(offres => OffreEvents.offresLoaded(offres));
+    .map(offres => this.offreEvents.offresLoaded(offres));
 
   //
   // Ajout aux favoris
@@ -35,5 +36,5 @@ export class OffreActions {
   @Effect() addOffreToFavoris$ = this.appState$
     .whenAction(OffreActions.ADD_OFFRE_TO_FAVORIS)
     .map<Offre>(toPayload)
-    .map(payload => OffreEvents.offreFavorisAdded(payload));
+    .map(payload => this.offreEvents.offreFavorisAdded(payload));
 }

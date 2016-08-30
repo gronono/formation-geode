@@ -8,13 +8,13 @@ import {compose} from '@ngrx/core/compose';
 import {storeLogger} from 'ngrx-store-logger';
 import {AppComponent } from './app.component';
 import { CountPipe} from './shared';
-import { FAVORIS_REDUCER, FavorisActions, FavorisComponent} from './favoris/index';
-import { OFFRES_REDUCER, OffreActions, OffresComponent, OffreService, OffreStates} from './offres/index';
+import { FAVORIS_STORE, FavorisActions, FavorisComponent} from './favoris/index';
+import { OFFRES_STORE, OffreActions, OffresComponent, OFFRES_PROVIDERS} from './offres/index';
 
-const STORE = {
-  offres: OFFRES_REDUCER,
-  favoris: FAVORIS_REDUCER
-};
+const STORE = Object.assign({},
+  FAVORIS_STORE,
+  OFFRES_STORE
+);
 
 @NgModule({
   declarations: [
@@ -30,7 +30,7 @@ const STORE = {
     StoreModule.provideStore(compose(storeLogger(), combineReducers)(STORE)),
   ],
   providers: [
-    OffreService, OffreStates,
+    ...OFFRES_PROVIDERS,
     runEffects(FavorisActions, OffreActions),
   ],
   bootstrap: [AppComponent],
