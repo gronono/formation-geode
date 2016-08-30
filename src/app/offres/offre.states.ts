@@ -12,4 +12,12 @@ export class OffreStates {
   getAllOffres(): Observable<Offre[]> {
     return this.store.select("offres") as Observable<Offre[]>;
   }
+
+  getOffre(id): Observable<Offre> {
+    return this.store.let((state$: Observable<any>) => state$
+      .map<Offre[]>(state => state.offres)
+      .flatMap(offres => Observable.from(offres))
+      .filter(offre => offre.id == id)
+    );
+  }
 }

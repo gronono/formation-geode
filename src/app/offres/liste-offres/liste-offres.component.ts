@@ -11,13 +11,12 @@ import { Offre } from '../index';
   styleUrls: ['liste-offres.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ListeOffresComponent implements OnInit, OnDestroy, OnChanges {
+export class ListeOffresComponent {
   @Input() offres: Offre[];
   @Input() selected: Offre;
   @Output() offreSelected = new EventEmitter<Offre>();
 
   onSelect(offre: Offre) {
-    console.log(`ListeOffresComponent.onSelect(${offre.id})`);
     this.offreSelected.emit(offre);
   }
 
@@ -25,15 +24,4 @@ export class ListeOffresComponent implements OnInit, OnDestroy, OnChanges {
     return offre === this.selected;
   }
 
-  ngOnInit() {
-    console.log('Init');
-  }
-
-  ngOnDestroy() {
-    console.log('Destroy');
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
-    console.log('Changes', changes);
-  }
 }
