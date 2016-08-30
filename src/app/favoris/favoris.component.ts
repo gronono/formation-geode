@@ -1,5 +1,7 @@
 import {Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { Offre } from '../offres/index';
+import {Observable} from "rxjs";
+import {Store} from "@ngrx/store";
 
 @Component({
   moduleId: module.id,
@@ -8,5 +10,9 @@ import { Offre } from '../offres/index';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FavorisComponent {
-  @Input() offres: Offre[];
+  public favoris$: Observable<Offre[]>;
+
+  constructor(store: Store<any>) {
+    this.favoris$ = store.select('favoris') as Observable<Offre[]>;
+  }
 }

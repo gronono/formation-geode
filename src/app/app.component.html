@@ -1,3 +1,6 @@
 <h1>{{title}}</h1>
-<geode-favoris [offres]="favoris$ | async"></geode-favoris>
-<geode-offres></geode-offres>
+<nav>
+  <a routerLink="/favoris" routerLinkActive="active">Favoris</a>
+  <a routerLink="/offres" routerLinkActive="active">Offres</a>
+</nav>
+<router-outlet></router-outlet>

@@ -1,6 +1,6 @@
 <h2>Favoris</h2>
 <ul>
-  <li *ngFor="let offre of offres">
+  <li *ngFor="let offre of favoris$ | async">
     {{offre.id}} - {{offre.titre}}
   </li>
 </ul>

@@ -13,10 +13,4 @@ import {Observable} from "rxjs/Rx";
 })
 export class AppComponent {
   title = 'app works!';
-
-  public favoris$: Observable<Offre[]>;
-
-  constructor(store: Store<any>) {
-    this.favoris$ = store.select('favoris') as Observable<Offre[]>;
-  }
 }

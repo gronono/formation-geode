@@ -8,13 +8,20 @@ import {compose} from '@ngrx/core/compose';
 import {storeLogger} from 'ngrx-store-logger';
 import {AppComponent } from './app.component';
 import { CountPipe} from './shared';
-import { FAVORIS_STORE, FavorisActions, FavorisComponent} from './favoris/index';
-import { OFFRES_STORE, OffreActions, OffresComponent, OFFRES_PROVIDERS} from './offres/index';
+import { FAVORIS_STORE, FavorisActions, FavorisComponent, FAVORIS_ROUTES} from './favoris/index';
+import { OFFRES_STORE, OffreActions, OffresComponent, OFFRES_PROVIDERS, OFFRES_ROUTES} from './offres/index';
+import {RouterModule} from "@angular/router";
 
 const STORE = Object.assign({},
   FAVORIS_STORE,
   OFFRES_STORE
 );
+
+const ROUTES = [
+  {path: '', redirectTo: '/offre', pathMatch: 'full'},
+  ...OFFRES_ROUTES,
+  ...FAVORIS_ROUTES
+];
 
 @NgModule({
   declarations: [
@@ -28,6 +35,7 @@ const STORE = Object.assign({},
     BrowserModule,
     FormsModule,
     StoreModule.provideStore(compose(storeLogger(), combineReducers)(STORE)),
+    RouterModule.forRoot(ROUTES)
   ],
   providers: [
     ...OFFRES_PROVIDERS,
